@@ -20,7 +20,7 @@ class CityList extends React.Component {
       <div>
         <h3>lijst</h3>
         <div className="myBox">
-          <ul onClick={this.selectname}>{cityComponents}</ul>
+          <ul>{cityComponents}</ul>
         </div>
       </div>
     );

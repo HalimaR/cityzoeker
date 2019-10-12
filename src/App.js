@@ -9,21 +9,23 @@ class App extends React.Component {
     super()
     this.state = {
       list: gemeenteList,
-      Selected_Row: "Koksijde"
+      Selected_Row: "Koksijde",
+      lon: 2.6500795,
+      lat: 51.1053908
     };
     this.selectname = this.selectname.bind(this);
   }
   selectname(name) {
     const found = this.state.list.filter(item => item.Name === name);
+    this.setState({lon: found[0].Lon});
+    this.setState({lat: found[0].Lat});
     console.log(found);
-    console.log("test "+ name);
-    return [found[0].Lat, found[0].Lon];
   }
  
   render(){
     return (
       <div>
-        <Locator getcordinate={this.selectname(this.state.Selected_Row)} />
+        <Locator lon={this.state.lon} lat={this.state.lat}/>
         <CityList Cities={this.state.list} selectnaam={this.selectname} />
       </div>
     );
