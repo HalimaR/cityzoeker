@@ -20,3 +20,15 @@
 .App-link {
   color: #09d3ac;
 }
+#mapid { 
+  height: 180px;
+  text-align: center;
+}
+.myBox {
+border: none;
+padding: 5px;
+font: 14px/20px sans-serif;
+width: 200px;
+height: 200px;
+overflow: scroll;
+}

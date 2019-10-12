@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Locator from './Locator';
+import CityList from './CityList';
+import gemeenteList from "./GemeenteList";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      list: gemeenteList,
+      Selected_Row: "Koksijde"
+    };
+    this.selectname = this.selectname.bind(this);
+  }
+  selectname(name) {
+    const found = this.state.list.filter(item => item.Name === name);
+    console.log(found);
+    console.log("test "+ name);
+    return [found[0].Lat, found[0].Lon];
+  }
+ 
+  render(){
+    return (
+      <div>
+        <Locator getcordinate={this.selectname(this.state.Selected_Row)} />
+        <CityList Cities={this.state.list} selectnaam={this.selectname} />
+      </div>
+    );
+  }
 }
 
 export default App;
